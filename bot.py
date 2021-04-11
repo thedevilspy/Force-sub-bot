@@ -55,13 +55,13 @@ def _check_member(client, message):
     user_id = message.from_user.id
     if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
       channel = chat_u
-      if Config.LANG == "en":
-       try:
+      try:
         client.get_chat_member(channel, user_id)
      except UserNotParticipant:
          try: #tahukai daala
               chat_u = chat_u.replace('@','')
               tauk = message.from_user.mention
+            if Config.LANG == "en":
               sent_message = message.reply_text(
                 f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please join and **press the button below** to unmute yourself.",
                 disable_web_page_preview=True,
@@ -76,14 +76,8 @@ def _check_member(client, message):
       except ChatAdminRequired:
           client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
   
-       elif Config.LANG == "si":
-        try:
-         client.get_chat_member(channel, user_id)
-        except UserNotParticipant:
-
-          try: #tahukai daala
-              chat_u = chat_u.replace('@','')
-              tauk = message.from_user.mention
+            elif Config.LANG == "si":
+      
               sent_message = message.reply_text(
                 f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
                 disable_web_page_preview=True,
