@@ -83,7 +83,7 @@ def _check_member(client, message):
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
               client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
 
-             except ChatAdminRequired:
+           except ChatAdminRequired:
                sent_message.edit("❗ **I am not an admin here.**\n__Make me admin with ban user permission__")
           
           except ChatAdminRequired:
