@@ -10,4 +10,4 @@ class Config(object):
 
     CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "")
 
-    LANG = os.environ.get("LANG", "")
+    MUTE_MESSAGE = os.environ.get("MUTE_MESSAGE", "")
