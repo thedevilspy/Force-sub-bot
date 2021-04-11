@@ -55,7 +55,7 @@ def _check_member(client, message):
   chat_u = Config.CHANNEL_USERNAME #channel for force sub
   if chat_u:
     user_id = message.from_user.id
-    if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator") and not user_id in Config.SUDO_USERS:
+    if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
       channel = chat_u
       try:
         client.get_chat_member(channel, user_id)
