@@ -75,5 +75,9 @@ def _check_member(client, message):
       except ChatAdminRequired:
          client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
 
+@Jebot.on_message(filters.command("start") & ~filters.group & ~filters.channel)
+def start(client, message):
+    await message.reply_text(Config.START_MESSAGE)
+
 
 Jebot.run()
