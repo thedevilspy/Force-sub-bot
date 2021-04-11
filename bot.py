@@ -1,4 +1,4 @@
-# All credits goes to <https://github.com/viperadnan-git/force-subscribe-telegram-bot>
+# All credits goes to Adnan for his repo <https://github.com/viperadnan-git/force-subscribe-telegram-bot>
 # Infinity BOTs <https://t.me/Infinity_BOTs>
 # @ImJanindu
 
