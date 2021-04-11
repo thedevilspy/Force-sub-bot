@@ -6,7 +6,6 @@ import os
 import time
 import logging
 from config import Config
-from config import LANG
 from pyrogram import Client, filters
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
@@ -76,7 +75,7 @@ def _check_member(client, message):
       except ChatAdminRequired:
          client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
 
-if LANG == "si":
+if Config.LANG == "si":
       client.sent_message.edit(f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
                disable_web_page_preview=True,
                reply_markup=InlineKeyboardMarkup(
