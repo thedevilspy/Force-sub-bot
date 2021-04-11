@@ -24,8 +24,8 @@ static_data_filter = filters.create(lambda _, __, query: query.data == "onUnMute
 
 @Jebot.on_callback_query(static_data_filter)
 def _onUnMuteRequest(client, lel):
-  user_id = cb.from_user.id
-  chat_id = cb.message.chat.id
+  user_id = lel.from_user.id
+  chat_id = lel.message.chat.id
   chat_u = Config.CHANNEL_USERNAME #channel for force sub
   if chat_u:
     channel = chat_u
@@ -76,5 +76,12 @@ def _check_member(client, message):
           
       except ChatAdminRequired:
         client.send_message(chat_id, text=f"❗ **I am not an admin in {channel}**\n__Make me admin in the channel__")
+
+print(
+    """
+Bot Started!
+Join @Infinity_BOTs
+"""
+)
 
 Jebot.run()
