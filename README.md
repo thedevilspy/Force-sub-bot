@@ -1,6 +1,6 @@
 # ForceSub Bot
 
-### A telegram bot that can force members in your group to join your channel by mute them and warns to join your channel 😌
+### A telegram bot that can force members in your group to join your channel by mute them and warns to join your channel
 
 ## Deploy to Heroku 🏃‍♂
 
