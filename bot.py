@@ -69,19 +69,16 @@ def _check_member(client, message):
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
-                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]
-              )
-          )
-          client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
+                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
+              client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
           else:
              sent_message = message.reply_text(
               f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
-                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]
-              )
-          )
+                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
+             client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
         except ChatAdminRequired:
           sent_message.edit("❗ **I am not an admin here.**\n__Make me admin with ban user permission__")
           
