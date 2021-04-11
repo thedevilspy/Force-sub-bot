@@ -6,7 +6,7 @@ import os
 import time
 import logging
 from config import Config
-from confug import LANG
+from config import LANG
 from pyrogram import Client, filters
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
