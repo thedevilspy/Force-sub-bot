@@ -68,6 +68,14 @@ def _check_member(client, message):
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
               client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
+              if Config.LANG == "si":
+               sent_message.edit(f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
+               disable_web_page_preview=True,
+               reply_markup=InlineKeyboardMarkup(
+                  [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
+                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
+              else:
+                message.continue_propagation()
 
          except ChatAdminRequired:
             sent_message.edit("❗ **I am not an admin here.**\n__Make me admin with ban user permission__")
@@ -75,13 +83,5 @@ def _check_member(client, message):
       except ChatAdminRequired:
          client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
 
-if Config.LANG == "si":
-      client.sent_message.edit(f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
-               disable_web_page_preview=True,
-               reply_markup=InlineKeyboardMarkup(
-                  [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
-                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
-else:
-      sent_message.continue_propagation()
 
 Jebot.run()
