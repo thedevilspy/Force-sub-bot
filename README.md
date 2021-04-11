@@ -14,5 +14,5 @@ A telegram bot that can force members in your group to join your channel by mute
 
 ### Devs:
 
-- [viperadnan](https://github.com/viperadnan-git)
+- [Adnan](https://github.com/viperadnan-git)
 - [ImJanindu](https://github.com/ImJanindu)
