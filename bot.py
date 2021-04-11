@@ -60,7 +60,6 @@ def _check_member(client, message):
       try:
         client.get_chat_member(channel, user_id)
       except UserNotParticipant:
-         if Config.LANG == "en":
            try: #tahukai daala
               chat_u = chat_u.replace('@','')
               tauk = message.from_user.mention
@@ -71,21 +70,13 @@ def _check_member(client, message):
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
               client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
-            except Exception as e:
-                print(e)
 
-          elif Config.LANG == "si":
-             try:
-               chat_u = chat_u.replace('@','')
-               tauk = message.from_user.mention
-               sent_message = message.reply_text(
-               f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
-               disable_web_page_preview=True,
-               reply_markup=InlineKeyboardMarkup(
-                  [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
-                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
-               client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
-             except Exception as e:
-                  print(e) 
+           except ChatAdminRequired:
+             sent_message.edit("❗ **I am not an admin here.**\n__Make me admin with ban user permission__")
+
+         except ChatAdminRequired:
+            client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
+  
+          
 
 Jebot.run()
