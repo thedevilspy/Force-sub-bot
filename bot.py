@@ -47,12 +47,11 @@ def _onUnMuteRequest(client, lel):
       else:
         client.answer_callback_query(lel.id, text="❗ Warning: Don't click the button if you can speak freely.", show_alert=True)
 
-if Config.LANG == "en":
-
 @Jebot.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
 def _check_member(client, message):
   chat_id = message.chat.id
   chat_u = Config.CHANNEL_USERNAME #channel for force sub
+ if Config.LANG == "en":
   if chat_u:
     user_id = message.from_user.id
     if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
@@ -77,10 +76,8 @@ def _check_member(client, message):
       except ChatAdminRequired:
           client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
   
-else:
+ else:
 
-@Jebot.on_message(filters.text & ~filters.private & ~filters.edited, group=1)
-def _check_member(client, message):
   chat_id = message.chat.id
   chat_u = Config.CHANNEL_USERNAME #channel for force sub
   if chat_u:
