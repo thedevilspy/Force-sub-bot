@@ -82,6 +82,6 @@ if Config.LANG == "si":
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
 else:
-      message.continue_propagation()
+      sent_message.continue_propagation()
 
 Jebot.run()
