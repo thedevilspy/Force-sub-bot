@@ -51,12 +51,12 @@ def _onUnMuteRequest(client, lel):
 def _check_member(client, message):
   chat_id = message.chat.id
   chat_u = Config.CHANNEL_USERNAME #channel for force sub
- if Config.LANG == "en":
   if chat_u:
     user_id = message.from_user.id
     if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
       channel = chat_u
-      try:
+      if Config.LANG == "en":
+       try:
         client.get_chat_member(channel, user_id)
       except UserNotParticipant:
          try: #tahukai daala
@@ -70,24 +70,18 @@ def _check_member(client, message):
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
               client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
 
-         except ChatAdminRequired:
+          except ChatAdminRequired:
              sent_message.edit("❗ **I am not an admin here.**\n__Make me admin with ban user permission__")
 
       except ChatAdminRequired:
           client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
   
- else:
+       elif Config.LANG == "si":
+        try:
+         client.get_chat_member(channel, user_id)
+        except UserNotParticipant:
 
-  chat_id = message.chat.id
-  chat_u = Config.CHANNEL_USERNAME #channel for force sub
-  if chat_u:
-    user_id = message.from_user.id
-    if not client.get_chat_member(chat_id, user_id).status in ("administrator", "creator"):
-      channel = chat_u
-      try:
-        client.get_chat_member(channel, user_id)
-      except UserNotParticipant:
-         try: #tahukai daala
+          try: #tahukai daala
               chat_u = chat_u.replace('@','')
               tauk = message.from_user.mention
               sent_message = message.reply_text(
@@ -98,11 +92,11 @@ def _check_member(client, message):
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
               client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
 
-         except ChatAdminRequired:
+           except ChatAdminRequired:
              sent_message.edit("❗ **I am not an admin here.**\n__Make me admin with ban user permission__")
 
-      except ChatAdminRequired:
-          client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
+         except ChatAdminRequired:
+           client.send_message(chat_id, text=f"❗ **I am not an admin in {chat_u}**\n__Make me admin in the channel__")
   
 
 Jebot.run()
