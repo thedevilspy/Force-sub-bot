@@ -62,7 +62,7 @@ def _check_member(client, message):
               chat_u = chat_u.replace('@','')
               tauk = message.from_user.mention
               sent_message = message.reply_text(
-                "Config.MUTE_MESSAGE",
+                f"Config.MUTE_MESSAGE",
                 disable_web_page_preview=True,
                 reply_markup=InlineKeyboardMarkup(
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
