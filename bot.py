@@ -38,7 +38,7 @@ def _onUnMuteRequest(client, lel):
             if lel.message.reply_to_message.from_user.id == user_id:
               lel.message.delete()
           except UserNotParticipant:
-            client.answer_callback_query(lel.id, text="❗ Join the mentioned 'channel' and press the 'UnMute Me' button again.", show_alert=True)
+            client.answer_callback_query(lel.id, text="❗ Join the mentioned 'channel' and press the 'Unmute Me' button again.", show_alert=True)
       else:
         client.answer_callback_query(lel.id, text="❗ You are muted by admins for other reasons.", show_alert=True)
     else:
@@ -60,7 +60,7 @@ def _check_member(client, message):
       try:
         client.get_chat_member(channel, user_id)
       except UserNotParticipant:
-        try:
+        try: #tahukai daala
           chat_u = chat_u.replace('@','')
           tauk = message.from_user.mention
           sent_message = message.reply_text(
@@ -78,11 +78,5 @@ def _check_member(client, message):
       except ChatAdminRequired:
         client.send_message(chat_id, text=f"❗ **I am not an admin in {channel}**\n__Make me admin in the channel__")
 
-print(
-    """
-Bot Started!
-Join @Infinity_BOTs
-"""
-)
 
 Jebot.run()
