@@ -60,20 +60,22 @@ def _check_member(client, message):
       try:
         client.get_chat_member(channel, user_id)
       except UserNotParticipant:
-        if Config.LANG is en:
           try: #tahukai daala
-            chat_u = chat_u.replace('@','')
-            tauk = message.from_user.mention
-            sent_message = message.reply_text(
-            f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please join and **press the button below** to unmute yourself.",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
+            if Config.LANG == "en":
+              chat_u = chat_u.replace('@','')
+              tauk = message.from_user.mention
+              sent_message = message.reply_text(
+              f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please join and **press the button below** to unmute yourself.",
+              disable_web_page_preview=True,
+              reply_markup=InlineKeyboardMarkup(
                   [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
                   [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]))
-            client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
-         else:
-           try:
-             sent_message = message.reply_text(
+              client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
+
+            else:
+              chat_u = chat_u.replace('@','')
+              tauk = message.from_user.mention
+              sent_message = message.reply_text(
               f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
