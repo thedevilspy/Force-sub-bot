@@ -77,7 +77,7 @@ def _check_member(client, message):
 
 @Jebot.on_message(filters.command("start") & ~filters.group & ~filters.channel)
 def start(client, message):
-   client.reply_text(Config.START_MESSAGE)
+   message.reply(Config.START_MESSAGE)
 
 
 Jebot.run()
