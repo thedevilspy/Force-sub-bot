@@ -58,7 +58,7 @@ def _check_member(client, message):
       if Config.LANG == "en":
        try:
         client.get_chat_member(channel, user_id)
-      except UserNotParticipant:
+     except UserNotParticipant:
          try: #tahukai daala
               chat_u = chat_u.replace('@','')
               tauk = message.from_user.mention
