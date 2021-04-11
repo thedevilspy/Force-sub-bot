@@ -64,7 +64,7 @@ def _check_member(client, message):
           chat_u = chat_u.replace('@','')
           tauk = message.from_user.mention
           if Config.LANG is en:
-          sent_message = message.reply_text(
+             sent_message = message.reply_text(
               f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please join and **press the button below** to unmute yourself.",
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
@@ -74,7 +74,7 @@ def _check_member(client, message):
           )
           client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
           else:
-          sent_message = message.reply_text(
+             sent_message = message.reply_text(
               f"{tauk}, ඔයා අපේ [channel](https://t.me/{chat_u}) එකට තාම join වෙලා නෑ. කරුණාකරලා ඒකට join වෙලා පහල තියෙන Unmute Me බටන් එක ක්ලික් කරන්න.",
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
