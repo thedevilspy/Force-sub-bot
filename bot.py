@@ -20,7 +20,7 @@ Jebot = Client(
 )
 
 # get mute request
-static_data_filter = filters.create(lambda _, __, query: query.data == "onUnMuteRequest")
+static_data_filter = filters.create(lambda _, __, query: query.data == "hukaidaala")
 
 @Jebot.on_callback_query(static_data_filter)
 def _onUnMuteRequest(client, lel):
@@ -67,7 +67,8 @@ def _check_member(client, message):
               f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please [join](https://t.me/{chat_u}) and **press the button below** to unmute yourself.",
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
-                  [[InlineKeyboardButton("Unmute Me", callback_data="onUnMuteRequest")]]
+                  [[InlineKeyboardButton("Unmute Me", callback_data="hukaidaala")],
+                  [InlineKeyboardButton("Join Channel", url=f"https://t.me/{chat_u}")]]
               )
           )
           client.restrict_chat_member(chat_id, user_id, ChatPermissions(can_send_messages=False))
