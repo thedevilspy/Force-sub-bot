@@ -1,3 +1,4 @@
+# All credits goes to <https://github.com/viperadnan-git/force-subscribe-telegram-bot>
 # Infinity BOTs <https://t.me/Infinity_BOTs>
 # @ImJanindu
 
@@ -42,8 +43,7 @@ def _onUnMuteRequest(client, lel):
         client.answer_callback_query(lel.id, text="❗ You are muted by admins for other reasons.", show_alert=True)
     else:
       if not client.get_chat_member(chat_id, (client.get_me()).id).status == 'administrator':
-        client.send_message(chat_id, f"❗ **{lel.from_user.mention} is trying to Unmute himself but I can't unmute him because I am not an admin in this chat add me as admin again.**\n__I'm leaving__")
-        client.leave_chat(chat_id)
+        client.send_message(chat_id, f"❗ **{lel.from_user.mention} is trying to Unmute himself but I can't unmute him because I am not an admin in this chat.")
       else:
         client.answer_callback_query(lel.id, text="❗ Warning: Don't click the button if you can speak freely.", show_alert=True)
 
@@ -61,8 +61,9 @@ def _check_member(client, message):
         client.get_chat_member(channel, user_id)
       except UserNotParticipant:
         try:
+          tauk = message.from_user.mention
           sent_message = message.reply_text(
-              "{}, you are **not subscribed** to our [channel](https://t.me/{}) yet. Please [join](https://t.me/{}) and **press the button below** to unmute yourself.".format(message.from_user.mention, channel, channel),
+              f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please [join](https://t.me/{chat_u}) and **press the button below** to unmute yourself."),
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
                   [[InlineKeyboardButton("Unmute Me", callback_data="onUnMuteRequest")]]
