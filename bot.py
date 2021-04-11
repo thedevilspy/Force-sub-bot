@@ -61,6 +61,7 @@ def _check_member(client, message):
         client.get_chat_member(channel, user_id)
       except UserNotParticipant:
         try:
+          chat_u = chat_u.replace('@','')
           tauk = message.from_user.mention
           sent_message = message.reply_text(
               f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please [join](https://t.me/{chat_u}) and **press the button below** to unmute yourself."),
