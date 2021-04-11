@@ -29,7 +29,11 @@
             "value": ""
         },
         "WARN_MESSAGE": {
-            "description": "The warn message you want to send when muting members",
+            "description": "The warn message you want to send after muted a member",
+            "value": ""
+        },
+        "START_MESSAGE": {
+            "description": "The message you want to send on bot's pm when do /start",
             "value": ""
         }
     },
