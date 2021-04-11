@@ -9,3 +9,5 @@ class Config(object):
     API_HASH = os.environ.get("API_HASH", "")
 
     CHANNEL_USERNAME = os.environ.get("CHANNEL_USERNAME", "")
+
+    LANG = os.environ.get("LANG", "")
