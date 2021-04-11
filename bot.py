@@ -64,7 +64,7 @@ def _check_member(client, message):
           chat_u = chat_u.replace('@','')
           tauk = message.from_user.mention
           sent_message = message.reply_text(
-              f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please [join](https://t.me/{chat_u}) and **press the button below** to unmute yourself."),
+              f"{tauk}, you are **not subscribed** to our [channel](https://t.me/{chat_u}) yet. Please [join](https://t.me/{chat_u}) and **press the button below** to unmute yourself.",
               disable_web_page_preview=True,
               reply_markup=InlineKeyboardMarkup(
                   [[InlineKeyboardButton("Unmute Me", callback_data="onUnMuteRequest")]]
